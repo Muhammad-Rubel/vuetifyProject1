@@ -6,47 +6,96 @@
   <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 </head>
+
 <body>
   <div id="app">
-    <v-app-bar dark>
-        <v-img class="ml-5" src="logo.png" alt="My Logo" max-width=70px></v-img>
-        <v-toolbar-title>Furniture Mart</v-toolbar-title>
+    <v-app>
+      <!--     Title Bar    -->
+      <!-- ------------------->
+      <v-app-bar dark app>
+        <v-img src="logo.png" alt="My Logo" max-width=70px></v-img>
+        <v-toolbar-title class="ml-3">Furniture Mart</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn text>Home</v-btn>
         <v-btn text>About</v-btn>
         <v-btn text>Contact</v-btn>
-    </v-app-bar>
+      </v-app-bar>
 
-    <v-carousel :show-arrows="false" cycle height=90vh>
-      <v-carousel-item
-        v-for="(item,i) in items"
-        :key="i"
-        :src="item.src"
-      >
+      <div class="my-8"></div>
+
+      <!--      Carousel    -->
+      <!-- ---------------- -->
+      <v-carousel :show-arrows="false" cycle height=90vh>
+        <v-carousel-item
+          v-for="(item,i) in items"
+          :key="i"
+          :src="item.src"
+          gradient="to top right, rgba(0,0,0,.3), rgba(0,0,0,.3)"
+        >
           <v-row
+          class="fill-height"
           align="center"
           justify="center"
           >
             <v-col class="text-center" cols="12">
-              <h1 class="display-1 font-weight-thin mb-4">Vuetify.js</h1>
-              <h4 class="subheading">Build your application today!</h4>
+              <h1>Vuetify.js</h1>
+              <h4>Build your application today!</h4>
             </v-col>
-        </v-row>     
-      </v-carousel-item>
-    </v-carousel>
+          </v-row>     
+        </v-carousel-item>
+      </v-carousel>
+      
+      <!--      About Us    -->
+      <!-- ---------------- -->
+      <v-container
+        class="py-10 text-center"
+        max-width="50%"
+      >
+        <h1 
+          class="my-5"
+        >{{ aboutUs.title }}</h1>
+        <p>{{ aboutUs.details }}</p>
+      </v-container>
 
-    <div
-      align="center"
-      max-width="300"  
-    >
-      <h1>About Us</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro commodi maxime tempore ipsa laborum in doloremque quam fuga id ut hic suscipit consequuntur, sunt maiores perferendis modi sint praesentium odit deleniti! Et sint culpa, eveniet vero incidunt maxime placeat ea, assumenda tenetur quae, quia numquam illum? Molestiae distinctio, quae impedit deleniti est odio placeat? Dolor obcaecati iste necessitatibus? Reiciendis sunt voluptatum voluptatem repellendus ad, sint repellat quia voluptate ea illum ipsa fugit soluta, debitis et cupiditate aperiam saepe veritatis veniam quidem deleniti. Possimus iste provident ipsam sunt tempore id optio adipisci, repudiandae velit a saepe repellendus porro facilis pariatur voluptate, maxime maiores, reiciendis aut nemo autem. Ipsa voluptatem ad quidem non doloremque rem magnam totam perferendis quia exercitationem soluta necessitatibus tenetur, aliquam fuga debitis doloribus sunt! Mollitia tempora reiciendis molestiae nostrum alias ratione doloremque quibusdam. Incidunt aliquam, officiis voluptatibus odit dicta cumque saepe sint molestiae vel officia dolorum eligendi rem ea voluptas modi alias nobis blanditiis! Incidunt tempore sequi culpa, labore possimus velit repellendus, perferendis quibusdam praesentium voluptas eligendi ipsum? At temporibus eius reiciendis consequuntur id vel animi mollitia similique adipisci optio tempora, ad rem atque, fugiat illum laborum eos alias exercitationem repellendus quaerat minima error ipsa. Delectus, modi! Odio.</p>
-    </div>
+      <!--  Parallax Image  -->
+      <!-- ---------------- -->
+      <v-parallax src="road.jpg" dark>
+        <v-overlay absolute>Overlay</v-overlay>
+      </v-parallax>
 
-      <v-parallax src="road.jpg"></v-parallax>
+      <!--  Our Team  -->
+      <!-- ---------------- -->
+      <v-container class="my-5" align="center"
+      justify="center">
+        <v-layout row wrap>
+          <v-flex xs12 sm6 md4 lg3 v-for="person in team" :key="person.name">
+            <v-card flat class="text-center ma-3" color="blue">
+              <v-responsive class="pt-3">
+                Image goes here
+              </v-responsive>
+              <v-card-text>
+                <div class="subheading">{{ person.name }}</div>
+                <div class="gray--text">{{ person.role }}</div>
+              </v-card-text>
+              <v-card-actions>
+                <v-btn flat color="gray">
+                  <v-icon small left>mes</v-icon>
+                  <span>Message</span>
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-container>
 
-    
+    </v-app>
   </div>
+
+
+
+
+
+
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
@@ -68,6 +117,17 @@
           {
             src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
           },
+        ],
+        aboutUs: {
+          title: "About Us",
+          details: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur beatae sit nesciunt, atque repudiandae optio iusto quasi, odio voluptates sapiente cupiditate fuga accusamus adipisci vitae temporibus ut. Quod consequuntur cumque odit consequatur maxime, quibusdam tempora! Atque id doloribus libero nam nemo sint dolorem fuga porro nulla, cumque vero alias dicta suscipit animi. Illum molestiae impedit at obcaecati neque debitis velit eveniet fugit molestias ipsam et numquam distinctio animi nemo, mollitia libero odit, quos voluptatibus, nulla aspernatur adipisci sequi! Dolores nihil quae repellat accusantium ad veniam, consequatur porro quam reprehenderit sapiente repellendus modi nemo, unde animi voluptatibus necessitatibus nam atque dolor? Repudiandae, eum quam? Labore voluptatibus consequuntur inventore facere rem, aut, obcaecati deleniti delectus accusamus voluptate sapiente! Libero atque praesentium dolore molestias eaque accusantium ratione in explicabo minus magni aliquid iste quisquam, repellendus quod fugit illum adipisci optio laudantium necessitatibus consequuntur modi doloremque quae distinctio. Impedit, ratione esse. Natus cum quasi dolore modi consequatur obcaecati quis et itaque, inventore optio recusandae temporibus! Necessitatibus consequatur similique quaerat aperiam nesciunt reiciendis, excepturi magnam eaque tempora aliquam, officia aspernatur voluptas sunt impedit nobis rem dolorum ipsum perferendis est iure facilis quia quae. Magni ut fuga sunt nesciunt? Sed tempora animi ratione minima exercitationem at?",
+        },
+        team: [
+          {name: "rubel", role: "Web Developer"},
+          {name: "Rohim", role: "Grapic Designer"},
+          {name: "Shah Alom", role: "Digital Marketing"},
+          {name: "Abir", role: "SEO"},
+          {name: "Tanvir", role: "Content Writer"}
         ]
       }
     })
