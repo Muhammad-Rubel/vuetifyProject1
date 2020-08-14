@@ -8,7 +8,7 @@
 </head>
 <body>
   <div id="app">
-    <v-app-bar>
+    <v-app-bar dark>
         <v-img class="ml-5" src="logo.png" alt="My Logo" max-width=70px></v-img>
         <v-toolbar-title>Furniture Mart</v-toolbar-title>
         <v-spacer></v-spacer>
@@ -17,15 +17,35 @@
         <v-btn text>Contact</v-btn>
     </v-app-bar>
 
-    <v-carousel cycle show-arrows-on-hover height=90vh>
-        <v-carousel-item
-          v-for="(item,i) in items"
-          :key="i"
-          :src="item.src"
-          reverse-transition="fade-transition"
-          transition="fade-transition"
-        ></v-carousel-item>
-      </v-carousel>
+    <v-carousel :show-arrows="false" cycle height=90vh>
+      <v-carousel-item
+        v-for="(item,i) in items"
+        :key="i"
+        :src="item.src"
+      >
+          <v-row
+          align="center"
+          justify="center"
+          >
+            <v-col class="text-center" cols="12">
+              <h1 class="display-1 font-weight-thin mb-4">Vuetify.js</h1>
+              <h4 class="subheading">Build your application today!</h4>
+            </v-col>
+        </v-row>     
+      </v-carousel-item>
+    </v-carousel>
+
+    <div
+      align="center"
+      max-width="300"  
+    >
+      <h1>About Us</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro commodi maxime tempore ipsa laborum in doloremque quam fuga id ut hic suscipit consequuntur, sunt maiores perferendis modi sint praesentium odit deleniti! Et sint culpa, eveniet vero incidunt maxime placeat ea, assumenda tenetur quae, quia numquam illum? Molestiae distinctio, quae impedit deleniti est odio placeat? Dolor obcaecati iste necessitatibus? Reiciendis sunt voluptatum voluptatem repellendus ad, sint repellat quia voluptate ea illum ipsa fugit soluta, debitis et cupiditate aperiam saepe veritatis veniam quidem deleniti. Possimus iste provident ipsam sunt tempore id optio adipisci, repudiandae velit a saepe repellendus porro facilis pariatur voluptate, maxime maiores, reiciendis aut nemo autem. Ipsa voluptatem ad quidem non doloremque rem magnam totam perferendis quia exercitationem soluta necessitatibus tenetur, aliquam fuga debitis doloribus sunt! Mollitia tempora reiciendis molestiae nostrum alias ratione doloremque quibusdam. Incidunt aliquam, officiis voluptatibus odit dicta cumque saepe sint molestiae vel officia dolorum eligendi rem ea voluptas modi alias nobis blanditiis! Incidunt tempore sequi culpa, labore possimus velit repellendus, perferendis quibusdam praesentium voluptas eligendi ipsum? At temporibus eius reiciendis consequuntur id vel animi mollitia similique adipisci optio tempora, ad rem atque, fugiat illum laborum eos alias exercitationem repellendus quaerat minima error ipsa. Delectus, modi! Odio.</p>
+    </div>
+
+      <v-parallax src="road.jpg"></v-parallax>
+
+    
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
